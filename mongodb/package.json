@@ -1,0 +1,8 @@
+{ "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env database.js"
+  },
+  "dependencies": {
+    "mongodb": "^6.13.0"
+  }
+}
