@@ -1,6 +1,9 @@
 import express from "express";
+import { addPostToMongoDb } from "./api/db/index.js";
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ?? 3000;
+
+addPostToMongoDb();
 
 app.get("/", (req, res) => {
   res.send("Hello World");
