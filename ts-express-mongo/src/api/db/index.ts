@@ -1,4 +1,5 @@
 import { Schema, model, connect } from "mongoose";
+import { MongoClient } from "mongodb";
 
 interface IPost {
   content: string;
@@ -10,14 +11,18 @@ const postSchema = new Schema<IPost>({
   author: { type: String, required: true },
 });
 
+const mongoUri = process.env.MONGO_URI;
+if (!mongoUri) {
+  throw new Error("MONGO_URI envinronment variable is not set");
+}
+
+export const client = new MongoClient(mongoUri);
+export const db = client.db("node-ts-api");
+
 const Post = model<IPost>("Post", postSchema);
 
 const connectToMongoDb = async (): Promise<object> => {
   try {
-    const mongoUri = process.env.MONGO_URI;
-    if (!mongoUri) {
-      throw new Error("MONGO_URI envinronment variable is not set");
-    }
     await connect(mongoUri);
     console.log("connected");
     return { status: 200, msg: "OK - Connected" };
@@ -31,11 +36,11 @@ export const addPostToMongoDb = async () => {
   try {
     await connectToMongoDb();
     const newPost = new Post({
-      content: "Hello, this is a test",
+      content: "Hello, this is the third test",
       author: "Ryan Myself",
     });
-    await newPost.save();
-    console.log("Success addition");
+    const addedPost = await newPost.save();
+    console.log(addedPost._id.toString());
   } catch (error) {
     console.error(error);
   }
