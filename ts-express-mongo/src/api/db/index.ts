@@ -32,6 +32,18 @@ const connectToMongoDb = async (): Promise<object> => {
   }
 };
 
+export const fetchAllfromMongoDb = async (): Promise<object> => {
+  try {
+    await connect(mongoUri);
+    const posts = await Post.find();
+    console.log(posts);
+    return { status: 200, msg: posts };
+  } catch (error) {
+    console.error(error);
+    return { status: 404, msg: "Records not found" };
+  }
+};
+
 export const addPostToMongoDb = async () => {
   try {
     await connectToMongoDb();
