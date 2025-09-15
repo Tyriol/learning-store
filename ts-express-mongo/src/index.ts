@@ -1,12 +1,11 @@
 import express from "express";
-import { addPostToMongoDb } from "./api/db/index.js";
+import { fetchAllfromMongoDb } from "./api/db/index.js";
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
-addPostToMongoDb();
-
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  fetchAllfromMongoDb();
+  res.send("Data fetched");
   console.log("message sent");
 });
 
