@@ -19,9 +19,9 @@ if (!mongoUri) {
 export const client = new MongoClient(mongoUri);
 export const db = client.db("node-ts-api");
 
-const Post = model<IPost>("Post", postSchema);
+export const Post = model<IPost>("Post", postSchema);
 
-const connectToMongoDb = async (): Promise<object> => {
+export const connectToMongoDb = async (): Promise<object> => {
   try {
     await connect(mongoUri);
     console.log("connected");
