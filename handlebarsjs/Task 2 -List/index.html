@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlebars exploration</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script id="list-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each products}}
+          <li><p>{{this.name}}</p></li>
+          <li><p>{{this.price}}</p></li>
+          <li><p>{{this.inStock}}</p></li>
+        {{/each}}
+      </ul>
+    </script>
+  </body>
+  <script src="index.js"></script>
+</html>
