@@ -1,0 +1,10 @@
+.intersection-container {
+  height: 200px;
+  width: 500px;
+  overflow: auto;
+  border: 5px solid #000;
+}
+
+.lightblue {
+  background-color: lightblue;
+}
