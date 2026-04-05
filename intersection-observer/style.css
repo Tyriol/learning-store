@@ -1,10 +1,16 @@
 .intersection-container {
   height: 200px;
-  width: 500px;
+  width: 250px;
   overflow: auto;
   border: 5px solid #000;
 }
 
 .lightblue {
   background-color: lightblue;
+}
+
+#count {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0 1rem;
 }
